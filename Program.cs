@@ -68,9 +68,9 @@ namespace DockerComposeReader
             Docker newDocker = new();
             Dictionary<string, Service> servicesInCompose = new();
             newDocker.version = $@"&{dockerOverride.version ?? docker.version}";
-            newDocker.secrets = dockerOverride.secrets ?? null;
-            newDocker.volumes = dockerOverride.volumes ?? null;
-            newDocker.networks = dockerOverride.networks ?? null;
+            newDocker.secrets = dockerOverride.secrets ?? docker.secrets;
+            newDocker.volumes = dockerOverride.volumes ?? docker.volumes;
+            newDocker.networks = dockerOverride.networks ?? docker.networks;
             foreach(var service in dockerOverride.services!)
             {
                 Service serviceIn = new();
